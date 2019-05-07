@@ -1,0 +1,135 @@
+{
+    "title": "Cloud OS Login",
+    "description": "Manages OS login configuration for Google account users.",
+    "docsUrl": "https://cloud.google.com/compute/docs/oslogin/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/oslogin/v1/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://oslogin.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "oslogin_users_projects_delete": {
+            "main": "./lib/actions/oslogin_users_projects_delete.js",
+            "title": "Deletes a POSIX account.",
+            "description": "Deletes a POSIX account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/oslogin_users_projects_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "oslogin_users_sshPublicKeys_get": {
+            "main": "./lib/actions/oslogin_users_sshPublicKeys_get.js",
+            "title": "Retrieves an SSH public key.",
+            "description": "Retrieves an SSH public key.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/oslogin_users_sshPublicKeys_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "oslogin_users_sshPublicKeys_patch": {
+            "main": "./lib/actions/oslogin_users_sshPublicKeys_patch.js",
+            "title": "Updates an SSH public key and returns the profile information. This method\nsupports patch semantics.",
+            "description": "Updates an SSH public key and returns the profile information. This method\nsupports patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/oslogin_users_sshPublicKeys_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "oslogin_users_getLoginProfile": {
+            "main": "./lib/actions/oslogin_users_getLoginProfile.js",
+            "title": "Retrieves the profile information used for logging in to a virtual machine\non Google Compute Engine.",
+            "description": "Retrieves the profile information used for logging in to a virtual machine\non Google Compute Engine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/oslogin_users_getLoginProfile.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "oslogin_users_importSshPublicKey": {
+            "main": "./lib/actions/oslogin_users_importSshPublicKey.js",
+            "title": "Adds an SSH public key and returns the profile information. Default POSIX\naccount information is set when no username and UID exist as part of the\nlogin profile.",
+            "description": "Adds an SSH public key and returns the profile information. Default POSIX\naccount information is set when no username and UID exist as part of the\nlogin profile.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/oslogin_users_importSshPublicKey.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

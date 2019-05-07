@@ -1,0 +1,65 @@
+{
+    "type": "object",
+    "properties": {
+        "parent": {
+            "required": true,
+            "type": "string"
+        },
+        "projectId": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The SSH public key information associated with a Google account.",
+            "properties": {
+                "expirationTimeUsec": {
+                    "description": "An expiration time in microseconds since epoch.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "description": "Output only. The SHA-256 fingerprint of the SSH public key.",
+                    "type": "string"
+                },
+                "key": {
+                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
